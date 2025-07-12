@@ -14,6 +14,6 @@ test('deve logar com sucesso', async ({ page }) => {
 
     await page.locator('button[type="submit"]').click()
 
-    const titulo = page.locator('h1')
-    await expect(titulo).toContainText('Olá, Fernando!')
+    const title = page.locator('h1')
+    await expect(title).toContainText('Olá, Fernando!')
 });
