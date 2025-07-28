@@ -19,33 +19,33 @@ export function getNewUser() {
 
 export const Users = {
     validUser: {
-        name: 'Fernando',
-        username: 'papito',
+        name: 'rani',
+        username: 'rps1988',
         password: 'pwd123'
     },
     wrongPassword: {
-        name: 'Fernando',
-        username: 'papito',
+        name: 'rani',
+        username: 'rps1988',
         password: '123456'
     },
     userNotFound: {
-        name: 'Fernando',
+        name: 'rani',
         username: 'not-found',
         password: '123456'
     },
     emptyFields: {
-        name: 'Fernando',
+        name: 'rani',
         username: '',
         password: ''
     },
     missingUsername: {
-        name: 'Fernando',
+        name: 'rani',
         username: '',
         password: 'pwd123'
     },
     missingPassword: {
-        name: 'Fernando',
-        username: 'papito',
+        name: 'rani',
+        username: 'rps1988',
         password: ''
     }
 }
