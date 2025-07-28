@@ -35,3 +35,63 @@ test('não deve cadastrar quando nenhum campo é informando', async ({ page }) =
     await expect(toast.element()).toContainText('Por favor, preencha todos os campos.')
 })
 
+test('não deve cadastrar quando o email for incorreto', async ({ page }) => {
+    const signupPage = getSignupPage(page)
+    const user: User = {
+        name: 'rani',
+        username: 'rps1988',
+        email: 'www.teste.com',
+        password:'abc123456',
+        confirmPassword: 'abc123456'
+    }
+    
+    await signupPage.open()
+    await signupPage.fill(user)
+    await signupPage.submit()
+
+    const email = page.getByPlaceholder('Seu melhor e-mail para receber novidades!')
+    await expect(email).toHaveAttribute('type', 'email')
+
+})
+
+test('não deve cadastrar quando o username é incorreto', async ({ page }) => {
+    const signupPage = getSignupPage(page)
+    const toast = getToast(page)
+
+    const user: User = {
+        name: 'rani',
+        username: 'rps1988&silva',
+        email: 'rps1988@gmail.com',
+        password:'abc123456',
+        confirmPassword: 'abc123456'
+    }
+    
+    await signupPage.open()
+    await signupPage.fill(user)
+    await signupPage.submit()
+
+    await expect(toast.element()).toContainText('Username inválido')
+    await expect(toast.element()).toContainText('O username deve conter apenas letras, números e underscores.')
+
+})
+
+test('não deve cadastrar as senhas não são iguais', async ({ page }) => {
+    const signupPage = getSignupPage(page)
+    const toast = getToast(page)
+
+    const user: User = {
+        name: 'rani',
+        username: 'rps1988',
+        email: 'rps1988@gmail.com',
+        password:'pwd123',
+        confirmPassword: 'abc123456'
+    }
+    
+    await signupPage.open()
+    await signupPage.fill(user)
+    await signupPage.submit()
+
+    await expect(toast.element()).toContainText('Senhas não coincidem')
+    await expect(toast.element()).toContainText('A confirmação de senha deve ser igual à senha.')
+
+})
