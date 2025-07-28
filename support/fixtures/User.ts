@@ -8,6 +8,18 @@ export interface User {
     confirmPassword: string
 }
 
+export function getMeuUser() {
+    const defaultPassword = 'pwd123'
+
+    return {
+        name: 'rani',
+        username: 'rps1988',
+        email: 'rps1988@gmail.com',
+        password: defaultPassword,
+        confirmPassword: defaultPassword
+    }
+}
+
 export function getNewUser() {
     const defaultPassword = 'pwd123'
 
