@@ -3,7 +3,7 @@ import { faker } from '@faker-js/faker'
 export interface User {
     name: string
     username: string
-    email: string
+    email?: string
     password: string
 }
 
